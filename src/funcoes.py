@@ -19,3 +19,24 @@ def listar(itens):
     else:
         for i, nome in enumerate(itens, start=1):
             print(f"{i}. {nome}")
+def remover(itens):
+    if not itens:
+        print("Nenhum item para remover.")
+        return
+
+    listar(itens)
+    
+    try:
+        num_remover = int(input("Digite o NÚMERO do item para remover (0 para cancelar): "))
+        
+        if num_remover == 0:
+            print("Operação cancelada.")
+            return
+        if 1 <= num_remover <= len(itens):
+            item_removido = itens.pop(num_remover - 1) 
+            print(f"Item '{item_removido}' removido com sucesso!")
+        else:
+            print("Número inválido.")
+            
+    except ValueError:
+        print("Entrada inválida. Digite um número.")
